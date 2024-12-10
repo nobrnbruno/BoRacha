@@ -34,22 +34,26 @@
         android:id="@+id/result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="48dp"
         android:text="0,00"
         android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSpeak"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/currency"
         app:layout_constraintTop_toBottomOf="@+id/edtQtd" />
 
-    <Button
-        android:id="@+id/btFalar"
+    <TextView
+        android:id="@+id/currency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="100dp"
-        android:onClick="clickSpeak"
-        android:text="Falar"
+        android:layout_marginStart="108dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginTop="48dp"
+        android:text="R\$"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toStartOf="@+id/result"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtQtd" />
 
@@ -57,26 +61,14 @@
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="32dp"
         android:clickable="true"
         android:importantForAccessibility="no"
         android:longClickable="true"
         android:onClick="shareText"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:srcCompat="?attr/actionModeShareDrawable" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="32dp"
-        android:contentDescription="Compre suas cartas Pokemon"
-        android:text="Próxima ->"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtQtd" />
 
     <EditText
         android:id="@+id/edtConta"
@@ -140,6 +132,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="edtQtd,imageView" />
+
+    <ImageView
+        android:id="@+id/buttonSpeak"
+        android:layout_width="41dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="84dp"
+        android:clickable="true"
+        android:onClick="clickSpeak"
+        android:focusable="true"
+        android:src="@drawable/sound"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/result"
+        app:layout_constraintTop_toBottomOf="@+id/edtQtd"
+        app:tint="?attr/colorOnBackground" />
 
     <ImageView
         android:id="@+id/imageView"

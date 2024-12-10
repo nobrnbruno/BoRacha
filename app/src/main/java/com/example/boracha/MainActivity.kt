@@ -48,33 +48,40 @@ class MainActivity : AppCompatActivity() , TextWatcher, TextToSpeech.OnInitListe
 
         if (param1 != null && param2 != null && param2 != 0f) {
             divide(param1, param2)
-        } else if (param2 == 0f) {
-            result.text = "0,00"
         } else {
-            result.text = "" // Clear result if input is incomplete
+            result.text = "0,00" // Default display
         }
     }
 
     private fun divide(param1: Float, param2: Float){
         val division: Float = (param1/param2)
 
-        result.text = division.toString()
+        val formattedResult = String.format(Locale("pt", "BR"), "%.2f", division).replace('.', ',')
+
+        result.text = formattedResult
     }
 
     fun clickSpeak(v: View){
+        val split = result.text.split(',')
+        val reaisValue = split[0] // Part before the comma
+        val centavosValue = split[1] // Part after the comma
+
         if (tts.isSpeaking) {
             tts.stop()
         }
         if(ttsSucess) {
             Log.d ("PDM23", tts.toString())
-            tts.speak(result.text, TextToSpeech.QUEUE_FLUSH, null, null)
+            tts.speak("$reaisValue reais e $centavosValue centavos", TextToSpeech.QUEUE_FLUSH, null, null)
         }
     }
 
     fun shareText(v: View) {
+        val message = "\uD83D\uDCB0 Total a rachar: R\$${edtConta.text.toString()}\n\uD83D\uDC65 Pessoas: ${edtQtd.text.toString()}\n💸 Divisão da conta: R\$${result.text.toString()}"
+
+
         val sendIntent: Intent = Intent().apply {
             action = Intent.ACTION_SEND
-            putExtra(Intent.EXTRA_TEXT, edtConta.text.toString())
+            putExtra(Intent.EXTRA_TEXT, message)
             type = "text/plain"
         }
 
